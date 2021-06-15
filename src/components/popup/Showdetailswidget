@@ -1,0 +1,13 @@
+
+
+import React from 'react'
+
+function Showdetailswidget() {
+    return (
+        <div>
+            
+        </div>
+    )
+}
+
+export default Showdetailswidget

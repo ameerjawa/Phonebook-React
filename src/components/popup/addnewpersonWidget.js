@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import cardsInfo from '../main/cardsInfo';
 
 
 
@@ -7,52 +8,93 @@ import React,{useState} from 'react'
 
 
 
-function AddnewpersonWidget() {
+class AddnewpersonWidget extends React.Component {
+
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      cardsIn:cardsInfo,
+      name: props.details.name!=null?props.details.name:'',
+      phone: props.details.phone!=null?props.details.phone:'',
+      address:props.details.address!=null?props.details.address:'',
+      email:props.details.email!=null?props.details.email:'',
+      descreption:props.details.descreption!=null?props.details.descreption:'',
+      errormessage: ''
+    };
+  }
+
+  myChangeHandler = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({[nam]: val});
+  }
+
+  handleSubmit= (e,tempname)=>{
+    e.preventDefault();
+
+   
+  
+
+var newContact={
+  name: this.state.name,
+  phone:this.state.phone,
+  address:this.state.address,
+  email:this.state.email,
+  imgSrc: 'https://via.placeholder.com/150/0000FF/ffffff',
+  text: this.state.descreption,
+}
+
+ 
+
+  
+
+tempname==''?this.props.onadd(newContact,e):this.props.onedit(newContact,tempname);
+
+
+  }
 
 
 
 
+render(){
+return this.props.active?
+    
+        <div className="addnewpersonForm" >
 
-    return (
-        <div className="addnewpersonForm" id="enablemode">
-
-<form id="addnewperson"  >
-        <h1 id="headerOfForm">add new person</h1>
-        <label for="name">Name:</label>
-        <input type="text" id="name" pattern="[A-Z][a-z]{3-10}" required />
-        <label for="telephone">Telephone:</label>
-        <input type="text" id="telephone" required />
-        <label for="address" pattern="[A-Z][a-z]{3-10}" title="must enter first big letter then small letter">Address:</label>
-        <input type="text" id="address" />
-        <label for="email">Email:</label>
-        <input type="text" id="email" />
-        <label for="description">Description:</label>
-        <input class="description" type="text" id="description" />
+<form id="addnewperson" onSubmit={(e)=>{this.handleSubmit(e,this.props.details.name)}}  >
+        <h1 id="headerOfForm">{this.props.details.name==''?"add ":"edit "} new person </h1>
+        <label htmlFor="name">Name:</label>
+        <input name="name" value={this.state.name} type="text" id="name" onChange={this.myChangeHandler}  /* pattern="[A-Z][a-z]{3-10}" */ required />
+        <label htmlFor="telephone">Telephone:</label>
+        <input name="phone" value={this.state.phone} onChange={this.myChangeHandler} type="text" id="telephone" required />
+        <label htmlFor="address" /* pattern="[A-Z][a-z]{3-10}"*/ title="must enter first big letter then small letter">Address:</label>
+        <input name="address" value={this.state.address} onChange={this.myChangeHandler} type="text" id="address" />
+        <label htmlFor="email">Email:</label>
+        <input name="email" value={this.state.email} onChange={this.myChangeHandler} type="text" id="email" />
+        <label htmlFor="description">Description:</label>
+        <input name="descreption" value={this.state.descreption} onChange={this.myChangeHandler} className="description" type="text" id="description" />
 
         <input
-          class="btnadd"
+          className="btnadd"
           id="addnewpersonbtn"
           type="Submit"
           name="add"
-          value="Add"
+          defaultValue={this.props.details.name==""?"Add":"Save"}
         />
+        
         <input
-          class="btnsave"
-          id="saveeditcontact"
-          type="Submit"
-          name="save"
-          value="save"
-        />
-        <input
-          class="btncancel"
+          className="btncancel"
+          onClick={this.props.oncancel}
           id="cancelbtn"
           name="cancel"
-                   value="Cancel"
+          defaultValue="cancel"
         />
       </form>
             
-        </div>
-    )
+        </div>:null;
+}
+    
 }
 
 export default AddnewpersonWidget

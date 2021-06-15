@@ -1,13 +1,21 @@
 import React from 'react'
 
 function SearchComponent() {
+
+
+
+
+  const searchfunction=()=>{
+
+  }
+
     return (
              <li>
             <input
            
               id="searchbar"
-              onkeyup="searchfunction()"
-              class="searchbar"
+              onKeyUp={searchfunction}
+              className="searchbar"
               placeholder="search"
             />
           </li>

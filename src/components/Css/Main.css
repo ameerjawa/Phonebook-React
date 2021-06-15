@@ -24,7 +24,7 @@
 .actions ul {
   display: grid;
   list-style: none;
-  grid-template-columns: minmax(20%, auto)  repeat(3, 10%);
+  grid-template-columns: minmax(20%, auto)  repeat(2, 10%);
 }
 .actions button {
   background: white;
@@ -110,4 +110,30 @@ max-width: 70px;
 }
 .btncancel{
   max-width: 50px;
+}
+
+.nocontactmessage{
+  display: flex;
+  justify-content: center;
+}
+
+.nocontactmessage h1{
+  color: red;
+  font-size: 35px;
+}
+
+.overlay{
+  position: fixed;
+  opacity: 1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  pointer-events: all;
+  background-color: rgba(0, 0,0, .5);
+}
+.xbutton{
+  width: 100%;
+ display: flex;
+ justify-content: end;
 }
