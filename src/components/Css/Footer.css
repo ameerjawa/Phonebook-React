@@ -1,5 +1,13 @@
 
+
+/******* footer styling */
 .Footer {
     padding: 1em;
     text-align: center;
+    text-shadow: 1.2px 1.2px  rgba(158, 194, 241, 0.7);
+
+   
+    color: goldenrod;
+    font-weight: bold;
   }
+

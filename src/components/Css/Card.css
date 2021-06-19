@@ -1,0 +1,36 @@
+/**** hover on the card */
+.card li:hover{
+    opacity: 0.9;
+    background-color: rgba(128, 209, 247, 0.849);
+    transition: 0.5s;
+  }
+
+
+
+/***
+ * 
+ *  styles of the card */
+.card li {
+     font-size: 1.3rem;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    display: grid;
+    list-style: none;
+    grid-gap: 8px;
+    grid-template-columns: repeat(2, 70px) repeat(1, 1fr) repeat(
+        3,
+        minmax(40px, auto)
+      );
+  }
+  .card h3{
+    margin: auto;
+  }
+  .card button {
+    min-height: 60%;
+    margin: auto
+  }
+  
+  .card img {
+    max-width: 100%;
+    border-radius: 50%;
+  }

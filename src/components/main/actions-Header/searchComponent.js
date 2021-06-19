@@ -1,25 +1,21 @@
-import React from 'react'
+import React from "react";
+import "../../Css/Searchcomponent.css";
 
-function SearchComponent() {
+function SearchComponent(props) {
+  const searchfunction = (name) => {
+    props.searchbyname(name);
+  };
 
-
-
-
-  const searchfunction=()=>{
-
-  }
-
-    return (
-             <li>
-            <input
-           
-              id="searchbar"
-              onKeyUp={searchfunction}
-              className="searchbar"
-              placeholder="search"
-            />
-          </li>
-    )
+  return (
+    <li>
+      <input
+        id="searchbar"
+        onChange={(e) => searchfunction(e.target.value)}
+        className="searchbar"
+        placeholder="search"
+      />
+    </li>
+  );
 }
 
-export default SearchComponent
+export default SearchComponent;

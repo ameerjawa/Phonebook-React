@@ -1,14 +1,17 @@
 import React from "react";
 
-import cardsInfo from "./cardsInfo";
+import cardsInfo from "../Users/cardsInfo";
 import Card from "../card/Card";
 import Actionsheader from "./actions-Header/actions-header";
 import "../Css/Main.css";
 import AddnewpersonWidget from "../popup/addnewpersonWidget";
+import ShowdetailsWidget from "../popup/showdetailsWidget";
 
-const MainContent = (props) => {
-  const [list, setList] = React.useState(cardsInfo);
-  const [isActive, setisActive] = React.useState(false);
+const MainContent = () => {
+  // widget variables
+  const [list] = React.useState(cardsInfo);
+  const [filteredData, setFilteredData] = React.useState(list);
+  const [isopenshowdetails, setisopenshowdetails] = React.useState(false);
   const [showedit, setshowedit] = React.useState(false);
   const [contact, setdetails] = React.useState({
     name: "",
@@ -19,6 +22,22 @@ const MainContent = (props) => {
     text: "",
   });
 
+  // function that sort the filterdlist by name of contact
+  function sortcontacts() {
+    list.sort(function (a, b) {
+      var nameA = a.name.toUpperCase();
+      var nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  // function that show addnewpersonwidget
   const onclickadd = () => {
     setdetails({
       name: "",
@@ -31,19 +50,27 @@ const MainContent = (props) => {
     setshowedit((showedit) => !showedit);
   };
 
+  // function that get a contact and add him to the filteredlist
   function add(newcontact, e) {
     if (checkifexists(newcontact.name)) {
       alert("name already exists");
+    } else if (!/^[a-zA-Z]+$/.test(newcontact.name)) {
+      alert(" name must be letters!!");
+    } else if (
+      newcontact.phone.length !== 10 ||
+      !/^[0-9]+$/.test(newcontact.phone)
+    ) {
+      alert("number must be 10  only digits");
     } else {
-      setList([...list, newcontact]);
+      setFilteredData([...filteredData, newcontact]);
       onclickadd();
     }
   }
 
+  // function that update details of speciefic contact
   function savedetails(newcontact, tempname) {
-    //console.log(editcheckifexists(newcontact));
 
-    if (true) {
+    if (checkifexists(newcontact)) {
       alert("name already exists");
     } else {
       const newList = list.map((item) => {
@@ -64,57 +91,36 @@ const MainContent = (props) => {
         return item;
       });
 
-      setList(newList);
+      setFilteredData(newList);
 
       setshowedit((showedit) => !showedit);
     }
   }
 
+  // function that get name of contact and delete them from the list
   function deletecontact(name) {
-    setList(list.filter((contact) => contact.name !== name));
+    setFilteredData(filteredData.filter((contact) => contact.name !== name));
   }
 
-  /**************
-   *
-   *  problem with this function down below
-   *
-   */
-
-  /*
-  function editcheckifexists(contact){
-
-    var index=getindex(contact.name);
-    
-
-    for (var i=0;i<list.length;i++){
-
-      if(list[i].name==contact.name && i==index)
-              return false;
-      else if(list[i].name==contact.name)
-                        return true        
-      
-         
-           
-
-
-    }
-    return false;
-  
-   
-  }
-*/
-  function checkifexists(name) {
-    for (var i = 0; i < list.length; i++) {
-      if (list[i].name == name) return true;
+  // function that get contact and check if it already exist
+  function checkifexists(contact) {
+    for (var i = 0; i < filteredData.length; i++) {
+      if (filteredData[i].name === contact.name) return true;
     }
     return false;
   }
 
+ 
+
+  // function that delete all the contact in the book
   function deleteall() {
-    setList([]);
+    setFilteredData([]);
   }
+
+  // function that use details for a speciefic contact
   function showdetails(item) {
-    setisActive((isActive) => !isActive);
+
+    setisopenshowdetails((isopenshowdetails) => !isopenshowdetails);
 
     setdetails({
       name: item.name,
@@ -126,18 +132,23 @@ const MainContent = (props) => {
     });
   }
 
+
+  // function that do search by name and filter the contact list 
+  function searchbyname(name) {
+    const results = list.filter((contact) =>
+      contact.name.toLowerCase().includes(name)
+    );
+    setFilteredData(results);
+  }
+
+
+  // function that close and open details window
   function closedetailswindow() {
-    setisActive((isActive) => !isActive);
+    setisopenshowdetails((isopenshowdetails) => !isopenshowdetails);
   }
 
-  function getindex(name) {
-    for (var i = 0; i < list.length; i++) {
-      if (list[i].name == name) return i;
-    }
 
-    return 0;
-  }
-
+  // function that show editdetails window and set the values
   function editdetails(item) {
     onclickadd();
 
@@ -156,24 +167,17 @@ const MainContent = (props) => {
   return (
     <article className="main">
       <Actionsheader
+        searchbyname={(name) => searchbyname(name)}
         onclickadd={() => onclickadd()}
         ondeleteall={() => deleteall()}
       />
-      {isActive ? (
-        <div className="addnewpersonForm">
-          <div className="xbutton">
-            <button onClick={() => closedetailswindow()}>X</button>
-          </div>
-
-          <img src={contact.imgSrc}></img>
-          <p>{contact.name}</p>
-          <p>{contact.address}</p>
-          <p>{contact.email}</p>
-          <p>{contact.phone}</p>
-          <p>{contact.text}</p>
-        </div>
+      {isopenshowdetails ? (
+        <ShowdetailsWidget
+          contact={contact}
+          onclose={() => closedetailswindow()}
+        />
       ) : null}
-      {isActive || showedit ? <div className="overlay"></div> : null}
+      {isopenshowdetails || showedit ? <div className="overlay"></div> : null}
       {showedit ? (
         <AddnewpersonWidget
           onedit={(newcontact, tempname) => savedetails(newcontact, tempname)}
@@ -186,7 +190,8 @@ const MainContent = (props) => {
 
       {list.length > 0 ? (
         <div className="contacts">
-          {list.map((item) => (
+          {sortcontacts()}
+          {filteredData.map((item) => (
             <Card
               oneditdetails={() => editdetails(item)}
               onshowdetails={() => showdetails(item)}

@@ -1,0 +1,31 @@
+
+
+/**
+ * 
+ * all the button in the actions header
+ */
+
+button{
+    background: none;
+    border: none;
+}
+* button:hover{
+    opacity: 0.7;
+    transition: 1s;
+    background: none;
+}
+
+
+/***
+ * 
+ * styles of actions header widget {box}
+ */
+.actions {
+    padding: 1rem 0;
+    border-bottom: 0.5px black solid;
+  }
+.actions ul {
+    display: grid;
+    list-style: none;
+    grid-template-columns: minmax(20%, auto)  repeat(2, 10%);
+  }

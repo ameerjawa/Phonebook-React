@@ -1,0 +1,18 @@
+/** search bar styling */
+
+input{
+    border-radius: 20px;
+    padding:7px;
+ 
+    border: none;
+    border-bottom: 2px white solid ;
+    border-top: 0.3px white solid ;
+    background: none;
+  
+    
+}
+
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:goldenrod;
+    opacity: 1; /* Firefox */
+  }

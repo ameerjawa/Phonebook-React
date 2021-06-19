@@ -1,0 +1,11 @@
+/** the button for exit details widget */
+.xbutton{
+    width: 100%;
+   display: flex;
+   justify-content: end;
+  }
+
+
+  img{
+      border-radius: 50%;
+  }

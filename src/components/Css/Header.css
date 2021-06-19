@@ -1,5 +1,13 @@
-
+/***  main header styles */
 
 .main-heading {
-    text-align: center;
-  }
+  text-align: center;
+  border: none;
+}
+
+.main-heading h1 {
+  font-size: 3rem;
+  text-shadow: 2.5px 2.5px rgba(158, 194, 241, 0.7);
+  color: goldenrod;
+  font-weight: bold;
+}

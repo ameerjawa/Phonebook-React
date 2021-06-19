@@ -1,12 +1,11 @@
 
-import React, {useState} from 'react';
-import Card from '../card/Card.js';
 
 
+// our list of contact
 
      const cardsInfo =[
         {
-          name: 'Card 1',
+          name: 'ameer',
           phone:"0504223536",
           address:"haifa",
           email:"ameer0233@gmail.com",
@@ -14,50 +13,29 @@ import Card from '../card/Card.js';
           text: 'I am the first in the list',
         },
         {
-         name: 'Card 2',
+         name: 'tania',
           phone:"0504223536",
-          address:"haifa",
+          address:"tania",
           email:"ameer0233@gmail.com",
           imgSrc: 'https://via.placeholder.com/150/FF0000/FFFFFF',
           text: 'I am the second',
         },
         {
           imgSrc: 'https://via.placeholder.com/150/000000/FFFFFF',
-          name: 'Card 3',
+          name: 'woroud',
           email:"ameer0233@gmail.com",
           address:"haifa",
           phone:"0504223536",
         },
         {
-          name: 'Card 4',
+          name: 'Ziki',
           phone:"0504223536",
           address:"haifa",
           email:"ameer0233@gmail.com",
           imgSrc: 'https://via.placeholder.com/150/FF0000/FFFFFF',
           text: 'I am the second',
         },
-        {
-          imgSrc: 'https://via.placeholder.com/150/000000/FFFFFF',
-          name: 'Card 5',
-          email:"ameer0233@gmail.com",
-          address:"haifa",
-          phone:"0504223536",
-        },
-        {
-          name: 'Card 6',
-          phone:"0504223536",
-          address:"haifa",
-          email:"ameer0233@gmail.com",
-          imgSrc: 'https://via.placeholder.com/150/FF0000/FFFFFF',
-          text: 'I am the second',
-        },
-        {
-          imgSrc: 'https://via.placeholder.com/150/000000/FFFFFF',
-          name: 'Card 7',
-          email:"ameer0233@gmail.com",
-          address:"haifa",
-          phone:"0504223536",
-        }
+       
       ]
 
 

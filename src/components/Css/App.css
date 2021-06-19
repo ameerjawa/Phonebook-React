@@ -1,18 +1,17 @@
 
-
+/******** main app style settings */
 .app {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
-top :0;
-bottom: 0;
-width: min(80%, 800px);
-    margin:  auto;
-    position: relative;
-  }
+  top: 0;
+  bottom: 0;
+  width: min(80%, 800px);
+  margin: auto;
+  position: relative;
+}
 
-
-  
-
- 
+body {
+  background-color: rgba(5, 57, 78, 0.966);
+}

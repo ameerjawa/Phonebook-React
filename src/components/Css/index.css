@@ -4,15 +4,16 @@
 
 /* postcss-normalize is installed on project creation */
 /* see https://create-react-app.dev/docs/adding-css-reset/ */
-@import-normalize; /* bring in normalize.css styles */
+/* bring in normalize.css styles */
 /* @import 'normalize.css'; */
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'American Typewriter';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: beige;
+
   color: #333;
 }
 

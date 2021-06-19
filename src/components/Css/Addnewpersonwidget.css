@@ -1,0 +1,63 @@
+
+
+
+/***
+ * 
+ * styles of addnewpersonwidget form 
+ */
+.addnewpersonForm{
+    display: flex;
+    left: 0;
+    right: 0;
+    border: 2px black solid;
+    background-color: beige;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    width: 40%;
+    padding: 20px;
+    border-radius: 20px;
+    z-index: 99;
+    margin: auto;
+    min-height: 50vh;
+    
+  }
+
+  /***
+   * styles of the input in addnewpersonwidget
+   */
+  .addnewpersonForm input {
+    display: block;
+    margin-bottom: 15px;
+    width: 80%;
+    margin: auto;
+    border-bottom: 3px solid rgb(4, 67, 104);
+    border-radius: 10px;
+  }
+  .addnewpersonForm h1 {
+    display: flex;
+  
+    justify-content: center;
+  }
+  .addnewpersonForm label{
+    display: flex;
+    justify-content: center;
+  }
+
+
+  
+  
+ 
+  /*** the two button in bottm of the form  */
+  
+  .btnadd{
+  max-width: 70px;
+  border: none;
+  
+  }
+  .btncancel{
+    max-width: 55px;
+    border: none;
+  }
+  
